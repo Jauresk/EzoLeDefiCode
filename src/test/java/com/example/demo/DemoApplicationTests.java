@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DemoApplicationTests {
-	private static DemoApplication.Calculatrice calculatrice;
+	private static Calculatrice calculatrice;
 
 	private static double a;
 	private static double b;
@@ -21,7 +20,7 @@ class DemoApplicationTests {
 
 	@BeforeEach
 	void init() {
-		calculatrice = new DemoApplication.Calculatrice();
+		calculatrice = new Calculatrice();
 		a = 1;
 		b = 1;
 		addition = (double a, double b) -> a + b;

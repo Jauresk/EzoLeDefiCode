@@ -6,13 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
 
-	public static class Calculatrice {
-		public Calculatrice () {}
-
-		public double calculer(double a, double b, OperationTest op){ return op.operation(a,b); }
-	}
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 
@@ -33,7 +26,6 @@ public class DemoApplication {
 		System.out.println("soustraire----"+sub);
 		System.out.println("produit*****"+pdt);
 		System.out.println("division/////"+div);
-
 
 
 	}
