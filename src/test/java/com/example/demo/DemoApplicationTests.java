@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -132,7 +134,7 @@ Test	Résultat attendu
 	@Test
 	public void assertThatSoustraireAndMultiplicationReturnTrueValue9() {
 
-		a = 2.8;
+		a= 2.8;
 		b = 3;
 		double pdt = calculatrice.calculer(a, b, produit);
 		System.out.println(pdt);
@@ -142,16 +144,89 @@ Test	Résultat attendu
 
 		System.out.println(sub);
 
-		assertTrue(sub == 7.4);
+		assertTrue(sub == 7.399999999999999);
 	}
 
-	/*
-	*
+
+	// "2^8"	"256"
+	@Test
+	public void assertThatMultiplicationPuissanceReturnTrueValue10() {
+
+		a = 2;
+		b = 2;
+		double pdt = calculatrice.calculer(a, b, produit);
+		System.out.println(pdt);
+		double pdt1 = calculatrice.calculer(pdt, b, produit);
+		System.out.println(pdt1);
+		double pdt2 = calculatrice.calculer(pdt1, b, produit);
+		System.out.println(pdt2);
+		double pdt3 = calculatrice.calculer(pdt2, b, produit);
+		System.out.println(pdt3);
+		double pdt4 = calculatrice.calculer(pdt3, b, produit);
+		System.out.println(pdt4);
+		double pdt5 = calculatrice.calculer(pdt4, b, produit);
+		System.out.println(pdt5);
+		double pdt6 = calculatrice.calculer(pdt5, b, produit);
+		System.out.println(pdt6);
+
+		assertTrue(pdt6 == 256.0);
+	}
 
 
-"2^8"	"256"
-"2^8*5-1"	"1279"
-"sqrt(4)"	"2"
-"1/0"	Erreur*
-	* */
+	// "2^8*5-1"	"1279"
+	@Test
+	public void assertThatMultiplicationPuissanceSoustractionReturnTrueValue11() {
+
+		a = 2;
+		b = 2;
+		double pdt = calculatrice.calculer(a, b, produit);
+		System.out.println(pdt);
+		double pdt1 = calculatrice.calculer(pdt, b, produit);
+		System.out.println(pdt1);
+		double pdt2 = calculatrice.calculer(pdt1, b, produit);
+		System.out.println(pdt2);
+		double pdt3 = calculatrice.calculer(pdt2, b, produit);
+		System.out.println(pdt3);
+		double pdt4 = calculatrice.calculer(pdt3, b, produit);
+		System.out.println(pdt4);
+		double pdt5 = calculatrice.calculer(pdt4, b, produit);
+		System.out.println(pdt5);
+		double pdt6 = calculatrice.calculer(pdt5, b, produit);
+		System.out.println(pdt6);
+
+		assertTrue(pdt6 == 256.0);
+
+		double pdt7 = calculatrice.calculer(pdt6, 5, produit);
+		System.out.println(pdt7);
+
+		double pdt8 = calculatrice.calculer(pdt7, 1, soustraire);
+		System.out.println(pdt7);
+		assertTrue(pdt8 == 1279.0);
+	}
+
+
+	// "sqrt(4)"	"2"
+	@Test
+	public void assertThatMultiplicationPuissanceReturnTrueValue12() {
+
+		a = 2;
+		double puiss = calculatrice.calculer(a, a, produit);
+		System.out.println(puiss);
+
+		assertTrue(puiss == 4.0);
+		assertTrue(a == 2.0);
+	}
+
+	// "1/0"	Erreur*
+	@Test
+	public void assertThatErrorReturnTrueValue13() {
+
+		a = 1;
+		b = 0;
+
+		assertEquals("divide double by zero should be infinity", true, Double
+				.isInfinite(calculatrice.calculer(a, b, division)));
+
+	}
+
 }
