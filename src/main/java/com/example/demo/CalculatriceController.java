@@ -1,12 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api")
-@RestController
+@Controller
 public class CalculatriceController {
 
     private Calculatrice calculatrice;
@@ -16,24 +15,42 @@ public class CalculatriceController {
         this.calculatrice = calculatrice;
     }
 
-    @RequestMapping("add/{a}/{b}")
-    public double additioner(@PathVariable double a, @PathVariable double b) {
-        return calculatrice.additioner(a, b);
+    @RequestMapping("/")
+    public String redirToList(){
+        return "redirect:/form";
     }
 
-    @RequestMapping("sub/{a}/{b}")
-    public double soustraire(@PathVariable double a, @PathVariable double b) {
-        return calculatrice.soustraire(a, b);
+    @GetMapping("/form")
+    public String helloForm(){
+        return "form";
     }
 
-    @RequestMapping("pdt/{a}/{b}")
-    public double produit(@PathVariable double a, @PathVariable double b) {
-        return calculatrice.produit(a, b);
+    @RequestMapping(value = "/form/add/{a}/{b}", method = RequestMethod.GET)
+    public String additioner(@PathVariable double a, @PathVariable double b, Model model) {
+        double result = calculatrice.additioner(a, b);
+        model.addAttribute("result",result);
+        return "form";
     }
 
-    @RequestMapping("div/{a}/{b}")
-    public double division(@PathVariable double a, @PathVariable double b) {
-        return calculatrice.division(a, b);
+    @RequestMapping(value = "/form/sub/{a}/{b}", method = RequestMethod.GET)
+    public String soustraire(@PathVariable double a, @PathVariable double b, Model model) {
+        double result = calculatrice.soustraire(a, b);
+        model.addAttribute("result",result);
+        return "form";
+    }
+
+    @RequestMapping(value ="/form/pdt/{a}/{b}", method = RequestMethod.GET)
+    public String produit(@PathVariable double a, @PathVariable double b, Model model) {
+        double result = calculatrice.produit(a, b);
+        model.addAttribute("result",result);
+        return "form";
+    }
+
+    @RequestMapping(value = "/form/div/{a}/{b}", method = RequestMethod.GET)
+    public String division(@PathVariable double a, @PathVariable double b, Model model) {
+        double result = calculatrice.division(a, b);
+        model.addAttribute("result",result);
+        return "form";
     }
 
 }

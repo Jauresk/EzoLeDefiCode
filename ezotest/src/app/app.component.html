@@ -356,15 +356,12 @@
   <div class="card-container">
     <a class="card" target="_blank" rel="noopener">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11 7h2a2 2 0 0 1 2 2v8h-2v-4h-2v4H9V9a2 2 0 0 1 2-2m0 2v2h2V9h-2m1 11a8 8 0 0 0 8-8a8 8 0 0 0-8-8a8 8 0 0 0-8 8a8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2z" fill="#626262"/></svg>
-      <span><input type="chiffrea" class="form-control" id="chiffre1" placeholder="Entrez a"></span>
-
-
+      <span><input type="chiffrea" [(ngModel)]='this.a' value="{{this.a}}" class="form-control" id="chiffre1" placeholder="Entrez a"></span>
     </a>
 
     <a class="card" target="_blank" rel="noopener">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M15 10.5c0 .8-.7 1.5-1.5 1.5c.8 0 1.5.7 1.5 1.5V15a2 2 0 0 1-2 2H9V7h4a2 2 0 0 1 2 2v1.5M13 15v-2h-2v2h2m0-4V9h-2v2h2m-1-9a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8z" fill="#626262"/></svg>
-      <span><input type="chiffreb" class="form-control" id="chiffre2" placeholder="Entrez b"></span>
-
+      <span><input type="chiffreb" [(ngModel)]='this.b' value="{{this.b}}" class="form-control" id="chiffre2" placeholder="Entrez b"></span>
     </a>
 
   </div>
@@ -376,23 +373,23 @@
   <input type="hidden" #selection>
 
   <div class="card-container">
-    <div class="card card-small" (click)="selection.value = 'component'" tabindex="0">
+    <div class="card card-small" (click)="selection.value = 'add'" tabindex="0" (click)="calculadd(this.a, this.b, selection.value)">
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
 
       <span> Addition </span>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'material'" tabindex="0">
+    <div class="card card-small" (click)="selection.value = 'sub'" tabindex="0" (click)="calculsub(this.a, this.b)">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z" fill="#626262"/></svg>
       <span> Soustraction </span>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11 3h2v7.27l6.29-3.63l1 1.73L14 12l6.3 3.64l-1 1.73l-6.3-3.65V21h-2v-7.27l-6.31 3.63l-1-1.73L10 12L3.72 8.36l1-1.73L11 10.26V3z" fill="#626262"/></svg>
+    <div class="card card-small" (click)="selection.value = 'pdt'" tabindex="0" (click)="calculpdt(this.a, this.b)">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M11 3h2v7.27l6.29-3.63l1 1.73L14 12l6.3 3.64l-1 1.73l-6.3-3.65V21h-2v-7.27l-6.31 3.63l-1-1.73L10 12L3.72 8.36l1-1.73L11 10.26V3z" fill="#626262"/></svg>
       <span> Multiplication </span>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'test'" tabindex="0">
+    <div class="card card-small" (click)="selection.value = 'div'" tabindex="0" (click)="calculdiv(this.a, this.b)">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2m-7-8a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0 10a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2z" fill="#626262"/></svg>
       <span> Division </span>
     </div>
@@ -405,11 +402,12 @@
   <!-- Terminal -->
   <div class="terminal" [ngSwitch]="selection.value">
 
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build --prod</pre>
+      <pre *ngSwitchDefault>{{result}}</pre>
+      <pre *ngSwitchCase="'sub'">{{result}}</pre>
+      <pre *ngSwitchCase="'pdt'">{{result}}</pre>
+      <pre *ngSwitchCase="'div'">{{result}}</pre>
+
+      {{ console.log('----------------> '+selection.value+this.result) }}
   </div>
 
 
