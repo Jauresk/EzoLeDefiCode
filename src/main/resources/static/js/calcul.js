@@ -1,62 +1,45 @@
 angular.module('calculApp', [])
   .controller('calculController', function($scope, $http) {
   var calcul = this;
-
-  $scope.panel = 0;
-  $scope.a = 0;
-  $scope.b = 0;
+  var i = 0;
+  $scope.panel = "";
   $scope.result = 0;
-
-  $scope.op = "";
-  $scope.api = "http://localhost:8080/form/";
-
 
   $scope.selectCalc = function (value) {
   console.log("select value "+value)
-  if ($scope.panel == 0 || $scope.op == "add") {
+  //if ($scope.result == 0 && value != '/' && value != '*' && value != '-' && value != '+' && value != '.' && value != '%') {
+  if ($scope.result == 0 && value == 0 && value != '/' && value != '*' && value != '-' && value != '+' && value != '.' && value != '%') {
   $scope.panel = "";
-  $scope.op = "";
-  }
+   console.log("vider pannel ");
+  } else {
   $scope.panel = $scope.panel + "" + value;
+  }
+
+  console.log("tableau $scope.calcul "+$scope.panel);
+  if (value != '/' && value != '*' && value != '-' && value != '+' && value != '.' && value != '%') {
+
+  $scope.result = $scope.$eval($scope.panel);
+  i++;
+  }
   }
 
   $scope.erase = function () {
   $scope.panel = "";
+  $scope.result = 0;
+  i = 0;
   }
 
-  $scope.divCalc = function () {
-
+  $scope.equal = function () {
+  $scope.result = eval($scope.panel);
   }
 
-  $scope.pdtCalc = function () {
+  $scope.pourCalc = function () {
+
+    $scope.panel = "";
+    $scope.panel = parseInt($scope.panel) / 100;
+    console.log("value pourcentage "+$scope.panel)
+    $scope.result = $scope.panel;
 
   }
-
-  $scope.subCalc = function () {
-
-  }
-
-  $scope.addCalc = function () {
-  if ($scope.a == 0) {
-    $scope.a = $scope.panel;
-    $scope.erase();
-    console.log("value a "+$scope.a)
-  } else {
-  $scope.a = parseInt($scope.a) + parseInt($scope.panel);
-  console.log("value a additionnee "+$scope.a)
-  $scope.panel = "";
-  $scope.panel = $scope.a;
-  $scope.op = "add";
-// http://localhost:8080/form/
-  /*$http.get("$scope.api/add/"+$scope.a+"/"+$scope.panel).then(function (response) {
-                 // $scope.subjectHasClassParClasse=response.data;
-              },function (response) {
-
-                  console.log(response);
-              });*/
-  }
-
-  }
-
 
   });

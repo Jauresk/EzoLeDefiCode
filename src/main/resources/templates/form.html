@@ -57,7 +57,7 @@ body {
     <div class="row">
         <div class="col-sm-6">
             <!-- Resources -->
-            <h2>Calculatrice {{1 + 2}}</h2>
+            <h2>Calculatrice</h2>
             <p>Entrer les chiffres a et b pour effctuer les calculs d'addition, de soustraction, multiplication et de division</p>
         </div>
     </div>
@@ -66,7 +66,7 @@ body {
             <form name="form" class="well calcontainer col-xs-12  col-sm-offset-4 col-sm-12  col-md-offset-3 col-md-6  col-lg-offset-3 col-lg-6">
 
                 <!-- panel for the calc -->
-
+                <span>{{result}}</span>
                 <input class=" form-control " id="panel" name="panel" ng-model="panel" placeholder="0." disabled><br/>
 
                 <!-- User Input Buttons for the calc -->
@@ -74,29 +74,29 @@ body {
                 <input class="form-group btn btn-default bttn" type="button" name="bttn7" ng-value="7" ng-click="selectCalc(7)">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn8" ng-value="8" ng-click="selectCalc(8)">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn9" ng-value="9" ng-click="selectCalc(9)">
-                <input class="form-group btn btn-danger bttn" type="button" name="bttnplus"  value="+" ng-click="addCalc()"><br/>
+                <input class="form-group btn btn-danger bttn" type="button" name="bttnplus" value="+" ng-click="selectCalc('+')"><br/>
 
 
                 <input class="form-group btn btn-default bttn" type="button" name="bttn4" ng-value="4" ng-click="selectCalc(4)">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn5" ng-value="5" ng-click="selectCalc(5)">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn6" ng-value="6" ng-click="selectCalc(6)">
-                <input class="form-group btn btn-danger bttn" type="button" name="bttnminus" value="-" ng-click="subCalc()"><br/>
+                <input class="form-group btn btn-danger bttn" type="button" name="bttnminus" value="-" ng-click="selectCalc('-')"><br/>
 
                 <input class="form-group btn btn-default bttn" type="button" name="bttn1" value="1"  ng-click="selectCalc(1)">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn2" value="2" ng-click="selectCalc(2)">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn3" value="3" ng-click="selectCalc(3)">
-                <input class="form-group btn btn-danger bttn" type="button" name="bttnmulti" value="*" ng-click="pdtCalc()"><br/>
+                <input class="form-group btn btn-danger bttn" type="button" name="bttnmulti" value="*" ng-click="selectCalc('*')"><br/>
 
 
-                <input class="form-group btn btn-default bttn" type="button" name="bttndot" value="." ng-model="selectedValue" ng-click="selectCalc(selectedValue)">
+                <input class="form-group btn btn-default bttn" type="button" name="bttndot" value="." ng-click="selectCalc('.')">
                 <input class="form-group btn btn-default bttn" type="button" name="bttn0" ng-value="0" ng-click="selectCalc(0)">
-                <input class="form-group btn btn-danger bttn" type="button" name="bttnmod" value="%" ng-model="selectedValue" ng-click="selectCalc(selectedValue)">
-                <input class="form-group btn btn-danger bttn" type="button" name="bttndiv" value="/" ng-click="divCalc()"><br/>
+                <input class="form-group btn btn-danger bttn" type="button" name="bttnmod" value="%" ng-click="pourCalc()">
+                <input class="form-group btn btn-danger bttn" type="button" name="bttndiv" value="/" ng-click="selectCalc('/')"><br/>
 
                 <!-- calling new reset function -->
                 <input class="form-group btn btn-info bttn bttne" type="button" name="bttnclear" value="CE"  ng-click="erase()">
 
-                <input class="form-group btn btn-success bttn bttne" type="button" name="bttnEQL" value="=" ng-model="selectedValue" onclick="eval(selectedValue)">
+                <input class="form-group btn btn-success bttn bttne" type="button" name="bttnEQL" value="=" ng-click="equal()">
 
 
             </form>
