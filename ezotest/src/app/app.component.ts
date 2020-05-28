@@ -29,9 +29,11 @@ export class AppComponent {
     }
 
     this.panel = this.panel + '' + value;
-    // console.log("tableau $scope.calcul "+$scope.panel);
+
     if (value !== '/' && value !== '*' && value !== '-' && value !== '+' && value !== '.' && value !== '%') {
+    if (Number(eval.call(this, this.panel))) {}
     this.result = eval.call(this, this.panel);
+    console.log('this.result ', this.result);
     this.i++;
     }
     }
@@ -53,35 +55,5 @@ export class AppComponent {
         this.result = Number(this.panel);
       }
 
-  /*calcul(a, b, selection) {
-    if (selection === 'add') {
-      this.result = a + b;
-    }
-    if (selection === 'sub') {
-      this.result = a - b;
-    }
-    if (selection === 'pdt') {
-      this.result = a * b;
-    }
-    if (selection === 'div') {
-      this.result = a / b;
-    }
-  }*/
-  /*calculadd(a, b) {
-    this.result = Number(a) + Number(b);
-  }
 
-  calculsub(a, b) {
-  this.result = a - b;
-  }
-
-  calculpdt(a, b) {
-  this.result = a * b;
-  }
-
-  calculdiv(a, b) {
-  this.result = a / b;
-  }*/
-
-// div, pdt, sub, add
 }
