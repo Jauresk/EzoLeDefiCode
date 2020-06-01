@@ -14,7 +14,7 @@ export class AppComponent {
 
   console = console;
 
-  selectCalc(value) {
+    selectCalc(value) {
     console.log(value);
     if (this.result === 0) {
       this.panel = '';
@@ -44,7 +44,7 @@ export class AppComponent {
         this.panel = '';
         this.panel = String(Number(this.panel) / 100);
         this.result = Number(this.panel);
-      }
+    }
 
 
 }
