@@ -16,14 +16,6 @@ export class AppComponent {
 
   selectCalc(value) {
     console.log(value);
-    // if ($scope.result == 0 && value != '/' && value != '*' && value != '-' && value != '+' && value != '.' && value != '%') {
-    /*if (this.result === 0 && value === 0 && value !== '/' && value !== '*' &&
-    value !== '-' && value !== '+' && value !== '.' && value !== '%') {
-    this.panel = '';
-     // console.log('vider pannel ');
-    } else {
-    }*/
-
     if (this.result === 0) {
       this.panel = '';
     }
@@ -51,7 +43,6 @@ export class AppComponent {
     pourCalc() {
         this.panel = '';
         this.panel = String(Number(this.panel) / 100);
-        // console.log("value pourcentage "+$scope.panel)
         this.result = Number(this.panel);
       }
 
